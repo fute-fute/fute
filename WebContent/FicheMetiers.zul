@@ -86,7 +86,7 @@
 					<vbox>
 						Commentaires : (faudra sûrement mettre autre
 						chose qu'un textbox)
-						<textbox width="200px" />
+						<textbox multiline="true" hflex="1" vflex="1"  width="100% MarchePas" height="70px" />
 					</vbox>
 				</vbox>
 			</groupbox>
