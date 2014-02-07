@@ -1,0 +1,979 @@
+<?page title="new page title" contentType="text/html;charset=UTF-8"?>
+<zk>
+	<window id="win" width="1200px" border="normal">
+
+		<caption>FICHE DE POSTE</caption>
+		<groupbox title="Genarle">
+			<grid>
+				<rows>
+					<row>
+						<cell>
+							Title:
+							<textbox id="titleTextbox"
+								value="${win$composer.inventoryItem.title}"
+								constraint="no empty" />
+						</cell>
+
+					</row>
+					<row>
+						Date de Creation:
+						<datebox id="createdDatebox"
+							value="${win$composer.inventoryItem.createdDate}"
+							format="yyyy/MM/dd" constraint="no empty" />
+					</row>
+
+
+					<row>
+						<cell>
+							Nom:
+							<textbox id="Nom"
+								value="${win$composer.inventoryItem.title}"
+								constraint="no empty" />
+						</cell>
+						<cell>
+							Prenom:
+							<textbox id="Prenom"
+								value="${win$composer.inventoryItem.title}"
+								constraint="no empty" />
+						</cell>
+					</row>
+
+					<row>
+						Date d'Emboche:
+						<cell>
+							<datebox id="date_embo"
+								value="${win$composer.inventoryItem.createdDate}"
+								format="yyyy/MM/dd" constraint="no empty" />
+						</cell>
+
+						Date de Sortie:
+						<cell>
+							<datebox id="date_sortie"
+								value="${win$composer.inventoryItem.createdDate}"
+								format="yyyy/MM/dd" constraint="no empty" />
+						</cell>
+					</row>
+
+					<row>
+						<cell>
+							Entreprise:
+							<textbox id="entreprise"
+								value="${win$composer.inventoryItem.title}"
+								constraint="no empty" />
+						</cell>
+						<cell>
+							Duree d'Exposition:
+							<spinner id="duree_exposition"
+								value="${win$composer.inventoryItem.quantity}" format=",###"
+								constraint="no empty,min 0" />
+						</cell>
+					</row>
+
+				</rows>
+			</grid>
+		</groupbox>
+
+		<groupbox title="Activité">
+			 
+			<grid>
+				<auxhead>
+
+				</auxhead>
+				<columns>
+					<column hflex="5">Activités</column>
+					<column hflex="6">Evaluation</column>
+
+				</columns>
+				<rows sclass="narrow">
+					<row>
+						<label value="Fait le ménage" />
+
+						<combobox value="Nean"/>
+					</row>
+					<row>
+						<label value="Entretient les chambres (fait les lits, range)" />
+						<combobox value="Occasionnel" />
+					</row>
+					<row>
+						<label value="Aide à la cuisine et à la vaisselle" />
+						<combobox value="Frequent"  />
+					</row>
+					<row>
+						<label value="Participe au service des repas" />
+						<combobox value="Permanant"  />
+					</row>
+					<row>
+						<label value="Entretient le linge : lave, repasse, coud" />
+						<combobox value="Neant" />
+					</row>
+					<row>
+						<label value="Korean (ko)" />
+						<combobox value="Surveillance Medicale renforcée" />
+					</row>
+					<row>
+						<label value="Aide à la mobilisation des personnes" />
+						<combobox value="Occasionnel"  />
+					</row>
+				</rows>
+			</grid>
+<button label="Inserer une ligne:" onClick=""></button>
+		</groupbox>
+
+		<groupbox title="Condition de Travail">
+			 	
+			<grid>
+<auxhead>
+		</auxhead>
+				<columns>
+					<column hflex="5">Horaires</column>
+					<column hflex="6">Journée</column>
+
+				</columns>
+				
+				<rows sclass="narrow1">
+
+				<row>
+						<label value="Contraintes organisationnelles et relationnelles" />
+					  	<label value="Relations enseignants  Relations hiérarchie
+Contact parents
+Rôle affectif et pédagogique avec les enfants
+Contact avec enfants en difficultés" />
+					</row>
+					<row>
+						<label value="Bruit" />
+					  	<label value="Cris, pleurs, cantine, cour" />
+					</row>
+					
+					<row>
+						<label value="Autre" />
+					  	<label value="Odeurs" />
+					</row>
+					</rows>
+
+			</grid>
+<button label="Inserer une ligne:" onClick=""></button>
+		</groupbox>
+
+		<groupbox title="Risques liés qux Activité">
+
+
+
+
+
+			 
+			<grid>
+
+
+				<auxhead>
+
+				</auxhead>
+				<columns>
+					<column hflex="5">Produits</column>
+					<column hflex="6">Evaluation</column>
+					<column hflex="5">MPI</column>
+					<column hflex="6">
+
+
+
+					</column>
+				</columns>
+
+
+
+				<rows sclass="narrow1">
+
+				<row>
+						<label value="Arabic (ar)" />
+						<combobox />
+						<label value="Boril Yonchev" />
+						<label value="iso-8859-5" />
+					</row>
+					<row>
+						<label value="Hungarian (hu)" />
+						<combobox />
+						<label value="Boril Yonchev" />
+						<label value="iso-8859-5" />
+					</row>
+					<row>
+						<label value="Italian (it)" />
+						<combobox />
+						<label value="Boril Yonchev" />
+						<label value="iso-8859-5" />
+					</row>
+					<row>
+						<label value="Indonesian (id)" />
+						<combobox />
+						<label value="Boril Yonchev" />
+						<label value="iso-8859-5" />
+					</row>
+					<row>
+						<label value="Japanese (ja)" />
+						<combobox />
+						<label value="Boril Yonchev" />
+						<label value="iso-8859-5" />
+					</row>
+					<row>
+						<label value="Korean (ko)" />
+						<combobox />
+						<label value="Boril Yonchev" />
+						<label value="iso-8859-5" />
+					</row>
+					<row>
+						<label value="Dutch (nl)" />
+						<combobox />
+						<label value="Boril Yonchev" />
+						<label value="iso-8859-5" />
+					</row>
+					<row>
+						<label value="Portuguese (pt)" />
+						<combobox />
+						<label value="Boril Yonchev" />
+						<label value="iso-8859-5" />
+					</row>
+					<row>
+						<label value="Brazilian Portugese (pt_BR)" />
+						<combobox />
+						<label value="Boril Yonchev" />
+						<label value="iso-8859-5" />
+					</row>
+					<row>
+						<label value="Romanian (ro)" />
+						<combobox />
+						<label value="Boril Yonchev" />
+						<label value="iso-8859-5" />
+					</row>
+
+					<row>
+
+						Rechercher:
+						<textbox id="Rechercher_Risque_Activité"
+							value="${win$composer.inventoryItem.title}"
+							constraint="no empty" />
+
+					</row>
+					<row>
+
+
+						<cell>
+
+							<tree id="tree" rows="7" multiple="true"
+								checkmark="true">
+								<treecols>
+									<treecol label="Thésaurus" />
+									<treecol label="Activités" />
+								</treecols>
+								<treechildren>
+									<treeitem>
+										<treerow>
+											<treecell label="Item 1" />
+											<treecell
+												label="Item 1 description" />
+										</treerow>
+									</treeitem>
+									<treeitem>
+										<treerow>
+											<treecell label="Item 2" />
+											<treecell
+												label="Item 2 description" />
+										</treerow>
+										<treechildren>
+											<treeitem>
+												<treerow>
+													<treecell
+														label="Item 2.1" />
+												</treerow>
+												<treechildren>
+													<treeitem>
+														<treerow>
+															<treecell
+																label="Item 2.1.1" />
+														</treerow>
+													</treeitem>
+													<treeitem>
+														<treerow>
+															<treecell
+																label="Item 2.1.2" />
+														</treerow>
+													</treeitem>
+												</treechildren>
+											</treeitem>
+											<treeitem>
+												<treerow>
+													<treecell
+														label="Item 2.2" />
+													<treecell
+														label="Item 2.2 description" />
+												</treerow>
+											</treeitem>
+										</treechildren>
+									</treeitem>
+									<treeitem label="Item 3" />
+								</treechildren>
+							</tree>
+
+
+						</cell>
+					</row>
+
+
+				</rows>
+
+
+			</grid>
+
+
+			<groupbox title="Maladies">
+				<grid>
+
+
+
+					<auxhead>
+
+					</auxhead>
+					<columns>
+						<column hflex="5">Maladies</column>
+						<column hflex="6">Evaluation</column>
+						<column hflex="5">Risques Autre</column>
+						<column hflex="6">Evaluation</column>
+					</columns>
+
+
+
+					<rows sclass="narrow1">
+
+
+
+
+						<row>
+							<label value="Arabic (ar)" />
+							<combobox />
+							<label value="Boril Yonchev" />
+							<combobox />
+						</row>
+						<row>
+							<label value="Hungarian (hu)" />
+							<combobox />
+							<label value="Boril Yonchev" />
+							<combobox />
+						</row>
+						<row>
+							<label value="Italian (it)" />
+							<combobox />
+							<label value="Boril Yonchev" />
+							<combobox />
+						</row>
+						<row>
+							<label value="Indonesian (id)" />
+							<combobox />
+							<label value="Boril Yonchev" />
+							<combobox />
+						</row>
+						<row>
+							<label value="Japanese (ja)" />
+							<combobox />
+							<label value="Boril Yonchev" />
+							<combobox />
+						</row>
+						<row>
+							<label value="Korean (ko)" />
+							<combobox />
+							<label value="Boril Yonchev" />
+							<combobox />
+						</row>
+						<row>
+							<label value="Dutch (nl)" />
+							<combobox />
+							<label value="Boril Yonchev" />
+							<combobox />
+						</row>
+						<row>
+							<label value="Portuguese (pt)" />
+							<combobox />
+							<label value="Boril Yonchev" />
+							<combobox />
+						</row>
+						<row>
+							<label value="Brazilian Portugese (pt_BR)" />
+							<combobox />
+							<label value="Boril Yonchev" />
+							<combobox />
+						</row>
+						<row>
+							<label value="Romanian (ro)" />
+							<combobox />
+							<label value="Boril Yonchev" />
+							<combobox />
+						</row>
+
+
+
+						<row>
+
+							Rechercher:
+							<textbox id="Rechercher_M"
+								value="${win$composer.inventoryItem.title}"
+								constraint="no empty" />
+
+						</row>
+						<row>
+
+
+							<cell>
+
+								<tree id="tree1" rows="7"
+									multiple="true" checkmark="true" width="800">
+									<treecols>
+										<treecol label="Thésaurus" />
+										<treecol label="Maladies" />
+									</treecols>
+									<treechildren>
+										<treeitem>
+											<treerow>
+												<treecell
+													label="Item 1" />
+												<treecell
+													label="Item 1 description" />
+											</treerow>
+										</treeitem>
+										<treeitem>
+											<treerow>
+												<treecell
+													label="Item 2" />
+												<treecell
+													label="Item 2 description" />
+											</treerow>
+											<treechildren>
+												<treeitem>
+													<treerow>
+														<treecell
+															label="Item 2.1" />
+													</treerow>
+													<treechildren>
+														<treeitem>
+															<treerow>
+																<treecell
+																	label="Item 2.1.1" />
+															</treerow>
+														</treeitem>
+														<treeitem>
+															<treerow>
+																<treecell
+																	label="Item 2.1.2" />
+															</treerow>
+														</treeitem>
+													</treechildren>
+												</treeitem>
+												<treeitem>
+													<treerow>
+														<treecell
+															label="Item 2.2" />
+														<treecell
+															label="Item 2.2 description" />
+													</treerow>
+												</treeitem>
+											</treechildren>
+										</treeitem>
+										<treeitem label="Item 3" />
+									</treechildren>
+								</tree>
+
+
+							</cell>
+						</row>
+
+					</rows>
+
+
+				</grid>
+
+			</groupbox>
+
+			<groupbox title="Autres Risques">
+				<grid>
+					<auxhead>
+
+					</auxhead>
+					<columns>
+						<column hflex="5">Maladies</column>
+						<column hflex="6">Evaluation</column>
+						<column hflex="5">Risques Autre</column>
+						<column hflex="6">Evaluation</column>
+					</columns>
+
+
+
+					<rows sclass="narrow1">
+
+
+
+
+						<row>
+							<label value="Arabic (ar)" />
+							<combobox />
+							<label value="Boril Yonchev" />
+							<combobox />
+						</row>
+						<row>
+							<label value="Hungarian (hu)" />
+							<combobox />
+							<label value="Boril Yonchev" />
+							<combobox />
+						</row>
+						<row>
+							<label value="Italian (it)" />
+							<combobox />
+							<label value="Boril Yonchev" />
+							<combobox />
+						</row>
+						<row>
+							<label value="Indonesian (id)" />
+							<combobox />
+							<label value="Boril Yonchev" />
+							<combobox />
+						</row>
+						<row>
+							<label value="Japanese (ja)" />
+							<combobox />
+							<label value="Boril Yonchev" />
+							<combobox />
+						</row>
+						<row>
+							<label value="Korean (ko)" />
+							<combobox />
+							<label value="Boril Yonchev" />
+							<combobox />
+						</row>
+						<row>
+							<label value="Dutch (nl)" />
+							<combobox />
+							<label value="Boril Yonchev" />
+							<combobox />
+						</row>
+						<row>
+							<label value="Portuguese (pt)" />
+							<combobox />
+							<label value="Boril Yonchev" />
+							<combobox />
+						</row>
+						<row>
+							<label value="Brazilian Portugese (pt_BR)" />
+							<combobox />
+							<label value="Boril Yonchev" />
+							<combobox />
+						</row>
+						<row>
+							<label value="Romanian (ro)" />
+							<combobox />
+							<label value="Boril Yonchev" />
+							<combobox />
+						</row>
+					</rows>
+
+				</grid>
+
+				<button label="Inserer une ligne:"></button>
+
+			</groupbox>
+
+
+
+
+
+
+
+			<groupbox
+				title="Protections Individuelles et collectives">
+				<grid>
+
+					<auxhead>
+
+					</auxhead>
+					<columns>
+						<column hflex="5"></column>
+						<column hflex="6">Type</column>
+						<column hflex="5">Disponible</column>
+						<column hflex="6">Utilisé</column>
+						<column hflex="6">
+							Fréquence d'utilisation
+						</column>
+					</columns>
+
+
+
+					<rows sclass="narrow1">
+
+
+
+
+						<row>
+							<label value="Arabic (ar)" />
+							<label value="Boril Yonchev" />
+							<spinner id="disponible1"
+								value="${win$composer.inventoryItem.quantity}" format=",###"
+								constraint="no empty,min 0" />
+							<combobox />
+							<label value="Boril Yonchev" />
+						</row>
+						<row>
+							<label value="Arabic (ar)" />
+							<label value="Boril Yonchev" />
+							<spinner id="disponible2"
+								value="${win$composer.inventoryItem.quantity}" format=",###"
+								constraint="no empty,min 0" />
+							<combobox />
+							<label value="Boril Yonchev" />
+						</row>
+						<row>
+							<label value="Arabic (ar)" />
+							<label value="Boril Yonchev" />
+							<spinner id="disponible3"
+								value="${win$composer.inventoryItem.quantity}" format=",###"
+								constraint="no empty,min 0" />
+							<combobox />
+							<label value="Boril Yonchev" />
+						</row>
+						<row>
+							<label value="Arabic (ar)" />
+							<label value="Boril Yonchev" />
+							<spinner id="disponible4"
+								value="${win$composer.inventoryItem.quantity}" format=",###"
+								constraint="no empty,min 0" />
+							<combobox />
+							<label value="Boril Yonchev" />
+						</row>
+						<row>
+							<label value="Arabic (ar)" />
+							<label value="Boril Yonchev" />
+							<spinner id="disponible5"
+								value="${win$composer.inventoryItem.quantity}" format=",###"
+								constraint="no empty,min 0" />
+							<combobox />
+							<label value="Boril Yonchev" />
+						</row>
+						<row>
+							<label value="Arabic (ar)" />
+							<label value="Boril Yonchev" />
+							<spinner id="disponible6"
+								value="${win$composer.inventoryItem.quantity}" format=",###"
+								constraint="no empty,min 0" />
+							<combobox />
+							<label value="Boril Yonchev" />
+						</row>
+						<row>
+							<label value="Arabic (ar)" />
+							<label value="Boril Yonchev" />
+							<spinner id="disponible7"
+								value="${win$composer.inventoryItem.quantity}" format=",###"
+								constraint="no empty,min 0" />
+							<combobox />
+							<label value="Boril Yonchev" />
+						</row>
+
+
+
+
+						<row>
+
+							Rechercher:
+							<textbox id="Rechercher_Protection_indi"
+								value="${win$composer.inventoryItem.title}"
+								constraint="no empty" />
+
+						</row>
+						<row>
+
+
+							<cell>
+
+								<tree id="tree2" rows="7"
+									multiple="true" checkmark="true" width="800">
+									<treecols>
+										<treecol label="Thésaurus" />
+										<treecol label="Protection" />
+									</treecols>
+									<treechildren>
+										<treeitem>
+											<treerow>
+												<treecell
+													label="Item 1" />
+												<treecell
+													label="Item 1 description" />
+											</treerow>
+										</treeitem>
+										<treeitem>
+											<treerow>
+												<treecell
+													label="Item 2" />
+												<treecell
+													label="Item 2 description" />
+											</treerow>
+											<treechildren>
+												<treeitem>
+													<treerow>
+														<treecell
+															label="Item 2.1" />
+													</treerow>
+													<treechildren>
+														<treeitem>
+															<treerow>
+																<treecell
+																	label="Item 2.1.1" />
+															</treerow>
+														</treeitem>
+														<treeitem>
+															<treerow>
+																<treecell
+																	label="Item 2.1.2" />
+															</treerow>
+														</treeitem>
+													</treechildren>
+												</treeitem>
+												<treeitem>
+													<treerow>
+														<treecell
+															label="Item 2.2" />
+														<treecell
+															label="Item 2.2 description" />
+													</treerow>
+												</treeitem>
+											</treechildren>
+										</treeitem>
+										<treeitem label="Item 3" />
+									</treechildren>
+								</tree>
+
+
+							</cell>
+						</row>
+
+					</rows>
+
+				</grid>
+
+
+			</groupbox>
+
+
+			<groupbox title="Vaccination">
+
+				<grid>
+
+					<auxhead>
+
+					</auxhead>
+					<columns>
+						<column hflex="5">Intitulé</column>
+						<column hflex="6">C</column>
+						<column hflex="5"></column>
+						<column hflex="6"></column>
+
+					</columns>
+
+
+
+					<rows sclass="narrow1">
+
+
+
+
+						<row>
+							<label value="Arabic (ar)" />
+							<label value="Boril Yonchev" />
+							<spinner id="disponible12"
+								value="${win$composer.inventoryItem.quantity}" format=",###"
+								constraint="no empty,min 0" />
+							<combobox />
+							<label value="Boril Yonchev" />
+						</row>
+						<row>
+							<label value="Arabic (ar)" />
+							<label value="Boril Yonchev" />
+							<spinner id="disponible11"
+								value="${win$composer.inventoryItem.quantity}" format=",###"
+								constraint="no empty,min 0" />
+							<combobox />
+							<label value="Boril Yonchev" />
+						</row>
+						<row>
+							<label value="Arabic (ar)" />
+							<label value="Boril Yonchev" />
+							<spinner id="disponible10"
+								value="${win$composer.inventoryItem.quantity}" format=",###"
+								constraint="no empty,min 0" />
+							<combobox />
+							<label value="Boril Yonchev" />
+						</row>
+						<row>
+							<label value="Arabic (ar)" />
+							<label value="Boril Yonchev" />
+							<spinner id="disponible8"
+								value="${win$composer.inventoryItem.quantity}" format=",###"
+								constraint="no empty,min 0" />
+							<combobox />
+							<label value="Boril Yonchev" />
+						</row>
+						<row>
+							<label value="Arabic (ar)" />
+							<label value="Boril Yonchev" />
+							<spinner id="disponible9"
+								value="${win$composer.inventoryItem.quantity}" format=",###"
+								constraint="no empty,min 0" />
+							<combobox />
+							<label value="Boril Yonchev" />
+						</row>
+						<row>
+							<label value="Arabic (ar)" />
+							<label value="Boril Yonchev" />
+							<spinner id="disponible"
+								value="${win$composer.inventoryItem.quantity}" format=",###"
+								constraint="no empty,min 0" />
+							<combobox />
+							<label value="Boril Yonchev" />
+						</row>
+
+						<row>
+
+							Rechercher:
+							<textbox id="Rechercher_vaccin"
+								value="${win$composer.inventoryItem.title}"
+								constraint="no empty" />
+
+						</row>
+						<row>
+
+
+							<cell>
+
+								<tree id="tree3" rows="7"
+									multiple="true" checkmark="true" width="800">
+									<treecols>
+										<treecol label="Thésaurus" />
+										<treecol label="Vaccin" />
+									</treecols>
+									<treechildren>
+										<treeitem>
+											<treerow>
+												<treecell
+													label="Item 1" />
+												<treecell
+													label="Item 1 description" />
+											</treerow>
+										</treeitem>
+										<treeitem>
+											<treerow>
+												<treecell
+													label="Item 2" />
+												<treecell
+													label="Item 2 description" />
+											</treerow>
+											<treechildren>
+												<treeitem>
+													<treerow>
+														<treecell
+															label="Item 2.1" />
+													</treerow>
+													<treechildren>
+														<treeitem>
+															<treerow>
+																<treecell
+																	label="Item 2.1.1" />
+															</treerow>
+														</treeitem>
+														<treeitem>
+															<treerow>
+																<treecell
+																	label="Item 2.1.2" />
+															</treerow>
+														</treeitem>
+													</treechildren>
+												</treeitem>
+												<treeitem>
+													<treerow>
+														<treecell
+															label="Item 2.2" />
+														<treecell
+															label="Item 2.2 description" />
+													</treerow>
+												</treeitem>
+											</treechildren>
+										</treeitem>
+										<treeitem label="Item 3" />
+									</treechildren>
+								</tree>
+
+
+							</cell>
+						</row>
+
+					</rows>
+
+				</grid>
+
+
+			</groupbox>
+
+
+
+			<groupbox title="Activités de temps Tiers">
+				<grid>
+					 
+
+
+					<auxhead>
+
+					</auxhead>
+					<columns>
+						<column hflex="5">Sonométrie</column>
+						<column hflex="6">Ambulance Lumineuse</column>
+
+
+
+						 
+					</columns>
+
+
+
+					<rows sclass="narrow1">
+
+
+
+
+						<row>
+							<label value="Arabic (ar)" />
+							<combobox />
+							<label value="Boril Yonchev" />
+							<label value="iso-8859-5" />
+						</row>
+						<row>
+							<label value="Hungarian (hu)" />
+							<combobox />
+							<label value="Boril Yonchev" />
+							<label value="iso-8859-5" />
+						</row>
+						<row>
+							<label value="Italian (it)" />
+							<combobox />
+							<label value="Boril Yonchev" />
+							<label value="iso-8859-5" />
+						</row>
+						<row>
+							<label value="Indonesian (id)" />
+							<combobox />
+							<label value="Boril Yonchev" />
+							<label value="iso-8859-5" />
+						</row>
+					</rows>
+
+				</grid>
+
+				<button label="Inserer une ligne:"></button>
+
+			</groupbox>
+
+			<button label="Valider"></button>
+
+		</groupbox>
+
+
+	</window>
+</zk>
