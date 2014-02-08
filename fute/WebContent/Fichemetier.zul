@@ -1,6 +1,6 @@
 <?page title="new page title" contentType="text/html;charset=UTF-8"?>
 <zk>
-	<window title="Fiche Métier" border="normal">
+	<window title="Fiche Métier" border="normal " width="100%">
 		<div id="div_principal">
 			<div id="div_intitule_métier">
 				Métier :
@@ -58,37 +58,50 @@
 			<space />
 			<groupbox>
 				<caption label="2. DEFINITION" />
+				<grid>
+				<rows>
+				<row>
+				Commentaires : 
+				</row>
+							<row>
+						
+						<textbox multiline="true" width="100%"  height="70px" />
+					 </row>
+					 
+				</rows>
+				</grid>
 			</groupbox>
 
 			<space />
-			<groupbox>
+			<groupbox width="100%">
+			 
 				<caption label="3. FORMATION - QUALIFICATION" />
-
-				<vbox vflex="1" hflex="1" spacing="20px">
-
-					<hbox hflex="1" vflex="1">
-						<checkbox label="Niveau VI" />
-						<label style="font-size:12px">
-							: pas de qualification requise
-						</label>
-					</hbox>
-					<hbox hflex="1" vflex="1">
-						<checkbox label="Niveau V" />
-						<label style="font-size:12px">
-							: CAP et BEP
-						</label>
-					</hbox>
-					<checkbox label="Niveau IV" />
-					<checkbox label="Niveau III" />
-					<checkbox label="Niveau II" />
-					<checkbox label="Niveau I" />
-
-					<vbox>
-						Commentaires : (faudra sûrement mettre autre
-						chose qu'un textbox)
-						<textbox multiline="true" hflex="1" vflex="1"  width="100% MarchePas" height="70px" />
-					</vbox>
-				</vbox>
+ 
+				 <grid>
+				 <rows>
+				 <row>
+				 <cell>Niveau:
+                    </cell>
+				 <cell>
+				 <zscript><![CDATA[
+        String[] etudes = {"Niveau VI : pas de qualification requise","Niveaux de formation V : CAP et BEP","Niveaux de formation IV : baccalauréats techniques et professionnels","Niveaux de formation III : bac+3 licence","Niveaux de formation II : bac+5 master"};
+    ]]></zscript>
+    <bandbox id="bd1" mold="rounded" autodrop="true">  
+        <bandpopup>
+            <listbox height="350px" width="550px" mold="paging" autopaging="true"
+                onSelect="bd1.value=self.selectedItem.label; bd1.close();">
+                <listhead>
+                    <listheader label="Niveau de Formation" />
+                </listhead>
+                <listitem label="${each}" forEach="${etudes}" />
+            </listbox>
+        </bandpopup>
+    </bandbox>
+    </cell>
+    
+    </row>
+			  </rows>
+			</grid>	 
 			</groupbox>
 			<space />
 			<groupbox>
@@ -97,55 +110,651 @@
 
 				<groupbox>
 					<caption label="4.1. LIEUX D'ACTIVITE" />
+					<grid>
+					<columns>
+						<column   />
+						<column  />
+					</columns>
+					
+										
+					<rows>
+						<row>
+						<cell>
+							<vbox width="100%"  >
+						Type d'Etablissement :
+						<textbox multiline="true" width="100%"  height="70px" />
+					</vbox> 
+							 </cell>
+							 
+							 
+							 <cell>
+							<vbox width="100%"  >
+						Environnement Physique de Travail :
+						<textbox multiline="true" width="100%"  height="70px" />
+					</vbox> 
+							 </cell>
+							 
+							 
+						</row>
+						</rows>
+					
+					</grid>
+					
 				</groupbox>
-				<groupbox>
+				<groupbox >
 					<caption label="4.2. DESCRIPTION DE L'ACTIVITE" />
-					Thésaurus des secteurs d'activité
+					<grid>
+					<rows>
+					
+					<row>
+					Rechercher:
+							<textbox id="Rechercher_Activité" width="80%"
+								value="${win$composer.inventoryItem.title}"
+								constraint="no empty" />
+					
+					</row>
+					<row>
+					
+					<cell>
+
+							<tree id="tree" rows="7" multiple="true"
+								checkmark="true">
+								<treecols>
+									<treecol label="Thésaurus" />
+									<treecol label="Activités" />
+								</treecols>
+								<treechildren>
+									<treeitem>
+										<treerow>
+											<treecell label="Item 1" />
+											<treecell
+												label="Item 1 description" />
+										</treerow>
+									</treeitem>
+									<treeitem>
+										<treerow>
+											<treecell label="Item 2" />
+											<treecell
+												label="Item 2 description" />
+										</treerow>
+										<treechildren>
+											<treeitem>
+												<treerow>
+													<treecell
+														label="Item 2.1" />
+												</treerow>
+												<treechildren>
+													<treeitem>
+														<treerow>
+															<treecell
+																label="Item 2.1.1" />
+														</treerow>
+													</treeitem>
+													<treeitem>
+														<treerow>
+															<treecell
+																label="Item 2.1.2" />
+														</treerow>
+													</treeitem>
+												</treechildren>
+											</treeitem>
+											<treeitem>
+												<treerow>
+													<treecell
+														label="Item 2.2" />
+													<treecell
+														label="Item 2.2 description" />
+												</treerow>
+											</treeitem>
+										</treechildren>
+									</treeitem>
+									<treeitem label="Item 3" />
+								</treechildren>
+								
+							
+							</tree>
+
+
+						</cell>
+						
+						<cell>
+						<vbox width="100%"  >
+						Description:
+						<textbox multiline="true" width="100%"  height="100px" hflex="100%" />
+					</vbox> 
+						
+						</cell>
+					</row>
+					
+					</rows>
+				</grid>
+				
+				
+					
+					 
 				</groupbox>
+				
 				<groupbox>
 					<caption label="4.3. MACHINES ET OUTILS UTILISES" />
+					
+					<grid>
+				<rows>
+				<row>
+				Indications : 
+				</row>
+							<row>
+						
+						<textbox multiline="true" width="100%"  height="70px" />
+					 </row>
+					 
+				</rows>
+				</grid>
+					
+					
 				</groupbox>
 				<groupbox>
 					<caption label="4.4. PRODUITS ET MATERIAUX" />
+					
+					<grid>
+				<rows>
+				<row>
+				Indications : 
+				</row>
+							<row>
+						
+						<textbox multiline="true" width="100%"  height="70px" />
+					 </row>
+					 
+				</rows>
+				</grid>
+					
 				</groupbox>
 				<groupbox>
 					<caption label="4.5. PUBLIC ET RELATIONS SOCIALES" />
+					
+					
+					<grid>
+				<rows>
+				
+				<row  >  
+				<zscript><![CDATA[
+        String[] languages = {"Direct","Indirect"};
+    ]]></zscript>
+    <bandbox id="bd" mold="rounded" autodrop="true">  
+        <bandpopup>
+            <listbox height="250px" width="450px" mold="paging" autopaging="true"
+                onSelect="bd.value=self.selectedItem.label; bd.close();">
+                <listhead>
+                    <listheader label="Contact avec le Public" />
+                </listhead>
+                <listitem label="${each}" forEach="${languages}" />
+            </listbox>
+        </bandpopup>
+    </bandbox>
+				</row>
+				<row>
+				Indications : 
+				</row>
+				
+				<row>
+						
+						<textbox multiline="true" width="100%"  height="70px" />
+					 </row>
+							
+					</rows>
+				</grid>
 				</groupbox>
+				
 				<groupbox>
 					<caption label="4.6. EXIGENCES PARTICULIERES" />
+					<grid>
+				<rows>
+				<row>
+				Indications : 
+				</row>
+							<row>
+						
+						<textbox multiline="true" width="100%"  height="70px" />
+					 </row>
+					 
+				</rows>
+				</grid>
+					
 				</groupbox>
+				
 				<groupbox>
 					<caption label="4.7. TRAVAILLEURS HANDICAPES" />
+					<grid>
+				<rows>
+				<row>
+				Indications : 
+				</row>
+							<row>
+						
+						<textbox multiline="true" width="100%"  height="70px" />
+					 </row>
+					 
+				</rows>
+				</grid>
 				</groupbox>
 
 			</groupbox>
 			<space />
 			<groupbox>
 				<caption label="5. ACTIVITES POUVANT ETRE ASSOCIEES" />
+				
+				
+					<grid>
+					<rows>
+					
+					<row>
+					Rechercher:
+							<textbox id="Rechercher_Activité_Associée" width="80%"
+								value="${win$composer.inventoryItem.title}"
+								constraint="no empty" />
+					
+					</row>
+					<row>
+					
+					<cell>
+
+							<tree id="tree2" rows="7" multiple="true"
+								checkmark="true">
+								<treecols>
+									<treecol label="Thésaurus" />
+									<treecol label="Activités" />
+								</treecols>
+								<treechildren>
+									<treeitem>
+										<treerow>
+											<treecell label="Item 1" />
+											<treecell
+												label="Item 1 description" />
+										</treerow>
+									</treeitem>
+									<treeitem>
+										<treerow>
+											<treecell label="Item 2" />
+											<treecell
+												label="Item 2 description" />
+										</treerow>
+										<treechildren>
+											<treeitem>
+												<treerow>
+													<treecell
+														label="Item 2.1" />
+												</treerow>
+												<treechildren>
+													<treeitem>
+														<treerow>
+															<treecell
+																label="Item 2.1.1" />
+														</treerow>
+													</treeitem>
+													<treeitem>
+														<treerow>
+															<treecell
+																label="Item 2.1.2" />
+														</treerow>
+													</treeitem>
+												</treechildren>
+											</treeitem>
+											<treeitem>
+												<treerow>
+													<treecell
+														label="Item 2.2" />
+													<treecell
+														label="Item 2.2 description" />
+												</treerow>
+											</treeitem>
+										</treechildren>
+									</treeitem>
+									<treeitem label="Item 3" />
+								</treechildren>
+								
+							
+							</tree>
+
+
+						</cell>
+						
+						<cell>
+						<vbox width="100%"  >
+						Description de l'Activité:
+						<textbox multiline="true" width="100%"  height="100px" hflex="100%" />
+					</vbox> 
+						
+						</cell>
+					</row>
+					
+					</rows>
+				</grid>
+				
+				
+				
+				
 				Thésaurus des professions?
 			</groupbox>
 			<space />
 			<groupbox>
 				<caption label="6. DANGERS" />
+				
+				
 				<groupbox>
 					<caption label="6.1. ACCIDENTS DU TRAVAIL" />
+					<grid>
+				<rows>
+				<row>
+				Indications : 
+				</row>
+							<row>
+						
+						<textbox multiline="true" width="100%"  height="70px" />
+					 </row>
+					 
+				</rows>
+				</grid>
 				</groupbox>
 				<groupbox>
 					<caption
 						label="6.2. AMBIANCES ET CONTRAINTES PHYSIQUES" />
+						
+						
+						
+					<grid>
+					<rows>
+					
+					<row>
+					Rechercher:
+							<textbox id="Rechercher_ambiance_contrainte_Physiqu" width="80%"
+								value="${win$composer.inventoryItem.title}"
+								constraint="no empty" />
+					
+					</row>
+					<row>
+					
+					<cell>
+
+							<tree id="tree3" rows="7" multiple="true"
+								checkmark="true">
+								<treecols>
+									<treecol label="Thésaurus" />
+									<treecol label="Activités" />
+								</treecols>
+								<treechildren>
+									<treeitem>
+										<treerow>
+											<treecell label="Item 1" />
+											<treecell
+												label="Item 1 description" />
+										</treerow>
+									</treeitem>
+									<treeitem>
+										<treerow>
+											<treecell label="Item 2" />
+											<treecell
+												label="Item 2 description" />
+										</treerow>
+										<treechildren>
+											<treeitem>
+												<treerow>
+													<treecell
+														label="Item 2.1" />
+												</treerow>
+												<treechildren>
+													<treeitem>
+														<treerow>
+															<treecell
+																label="Item 2.1.1" />
+														</treerow>
+													</treeitem>
+													<treeitem>
+														<treerow>
+															<treecell
+																label="Item 2.1.2" />
+														</treerow>
+													</treeitem>
+												</treechildren>
+											</treeitem>
+											<treeitem>
+												<treerow>
+													<treecell
+														label="Item 2.2" />
+													<treecell
+														label="Item 2.2 description" />
+												</treerow>
+											</treeitem>
+										</treechildren>
+									</treeitem>
+									<treeitem label="Item 3" />
+								</treechildren>
+								
+							
+							</tree>
+
+
+						</cell>
+						
+						<cell>
+						<vbox width="100%"  >
+						Description du danger:
+						<textbox multiline="true" width="100%"  height="100px" hflex="100%" />
+					</vbox> 
+						
+						</cell>
+					</row>
+					
+					</rows>
+				</grid>
+				
+						
 					Thésaurus des expositions professionnelles
 				</groupbox>
 				<groupbox>
 					<caption label="6.3. AGENTS CHIIMIQUES" />
+					
+								<grid>
+					<rows>
+					
+					<row>
+					Rechercher:
+							<textbox id="Rechercher_chimique" width="80%"
+								value="${win$composer.inventoryItem.title}"
+								constraint="no empty" />
+					
+					</row>
+					<row>
+					
+					<cell>
+
+							<tree id="tree4" rows="7" multiple="true"
+								checkmark="true">
+								<treecols>
+									<treecol label="Thésaurus" />
+									<treecol label="Activités" />
+								</treecols>
+								<treechildren>
+									<treeitem>
+										<treerow>
+											<treecell label="Item 1" />
+											<treecell
+												label="Item 1 description" />
+										</treerow>
+									</treeitem>
+									<treeitem>
+										<treerow>
+											<treecell label="Item 2" />
+											<treecell
+												label="Item 2 description" />
+										</treerow>
+										<treechildren>
+											<treeitem>
+												<treerow>
+													<treecell
+														label="Item 2.1" />
+												</treerow>
+												<treechildren>
+													<treeitem>
+														<treerow>
+															<treecell
+																label="Item 2.1.1" />
+														</treerow>
+													</treeitem>
+													<treeitem>
+														<treerow>
+															<treecell
+																label="Item 2.1.2" />
+														</treerow>
+													</treeitem>
+												</treechildren>
+											</treeitem>
+											<treeitem>
+												<treerow>
+													<treecell
+														label="Item 2.2" />
+													<treecell
+														label="Item 2.2 description" />
+												</treerow>
+											</treeitem>
+										</treechildren>
+									</treeitem>
+									<treeitem label="Item 3" />
+								</treechildren>
+								
+							
+							</tree>
+
+
+						</cell>
+						
+						<cell>
+						<vbox width="100%"  >
+						Description Chimique:
+						<textbox multiline="true" width="100%"  height="100px" hflex="100%" />
+					</vbox> 
+						
+						</cell>
+					</row>
+					
+					</rows>
+				</grid>
+				
+					
+					
 					Thésaurus des expositions professionnelles
 				</groupbox>
 				<groupbox>
 					<caption label="6.4. AGENTS BIOLOGIQUES" />
+					
+					
+								<grid>
+					<rows>
+					
+					<row>
+					Rechercher:
+							<textbox id="Rechercher_Biologique" width="80%"
+								value="${win$composer.inventoryItem.title}"
+								constraint="no empty" />
+					
+					</row>
+					<row>
+					
+					<cell>
+
+							<tree id="tree5" rows="7" multiple="true"
+								checkmark="true">
+								<treecols>
+									<treecol label="Thésaurus" />
+									<treecol label="Activités" />
+								</treecols>
+								<treechildren>
+									<treeitem>
+										<treerow>
+											<treecell label="Item 1" />
+											<treecell
+												label="Item 1 description" />
+										</treerow>
+									</treeitem>
+									<treeitem>
+										<treerow>
+											<treecell label="Item 2" />
+											<treecell
+												label="Item 2 description" />
+										</treerow>
+										<treechildren>
+											<treeitem>
+												<treerow>
+													<treecell
+														label="Item 2.1" />
+												</treerow>
+												<treechildren>
+													<treeitem>
+														<treerow>
+															<treecell
+																label="Item 2.1.1" />
+														</treerow>
+													</treeitem>
+													<treeitem>
+														<treerow>
+															<treecell
+																label="Item 2.1.2" />
+														</treerow>
+													</treeitem>
+												</treechildren>
+											</treeitem>
+											<treeitem>
+												<treerow>
+													<treecell
+														label="Item 2.2" />
+													<treecell
+														label="Item 2.2 description" />
+												</treerow>
+											</treeitem>
+										</treechildren>
+									</treeitem>
+									<treeitem label="Item 3" />
+								</treechildren>
+								
+							
+							</tree>
+
+
+						</cell>
+						
+						<cell>
+						<vbox width="100%"  >
+						Description Biologique du danger:
+						<textbox multiline="true" width="100%"  height="100px" hflex="100%" />
+					</vbox> 
+						
+						</cell>
+					</row>
+					
+					</rows>
+				</grid>
+				
+					
+					
 					Thésaurus des expositions professionnelles
 				</groupbox>
 				<groupbox>
 					<caption
 						label="6.5. CONTRAINTES ORGANISATIONNELLES ET RELATIONNELLES" />
+						
+					<grid>
+				<rows>
+				<row>
+				Indications : 
+				</row>
+							<row>
+						
+						<textbox multiline="true" width="100%"  height="70px" />
+					 </row>
+					 
+				</rows>
+				</grid>	
+						
+						
 				</groupbox>
 			</groupbox>
 			<space />
@@ -154,11 +763,186 @@
 
 				<groupbox>
 					<caption label="7.1. MALADIES PROFESSIONNELLES" />
+					
+								<grid>
+					<rows>
+					
+					<row>
+					Rechercher:
+							<textbox id="Rechercher_Maladie" width="80%"
+								value="${win$composer.inventoryItem.title}"
+								constraint="no empty" />
+					
+					</row>
+					<row>
+					
+					<cell>
+
+							<tree id="tree6" rows="7" multiple="true"
+								checkmark="true">
+								<treecols>
+									<treecol label="Thésaurus" />
+									<treecol label="Activités" />
+								</treecols>
+								<treechildren>
+									<treeitem>
+										<treerow>
+											<treecell label="Item 1" />
+											<treecell
+												label="Item 1 description" />
+										</treerow>
+									</treeitem>
+									<treeitem>
+										<treerow>
+											<treecell label="Item 2" />
+											<treecell
+												label="Item 2 description" />
+										</treerow>
+										<treechildren>
+											<treeitem>
+												<treerow>
+													<treecell
+														label="Item 2.1" />
+												</treerow>
+												<treechildren>
+													<treeitem>
+														<treerow>
+															<treecell
+																label="Item 2.1.1" />
+														</treerow>
+													</treeitem>
+													<treeitem>
+														<treerow>
+															<treecell
+																label="Item 2.1.2" />
+														</treerow>
+													</treeitem>
+												</treechildren>
+											</treeitem>
+											<treeitem>
+												<treerow>
+													<treecell
+														label="Item 2.2" />
+													<treecell
+														label="Item 2.2 description" />
+												</treerow>
+											</treeitem>
+										</treechildren>
+									</treeitem>
+									<treeitem label="Item 3" />
+								</treechildren>
+								
+							
+							</tree>
+
+
+						</cell>
+						
+						<cell>
+						<vbox width="100%"  >
+						Description de la Maladie:
+						<textbox multiline="true" width="100%"  height="100px" hflex="100%" />
+					</vbox> 
+						
+						</cell>
+					</row>
+					
+					</rows>
+				</grid>
+				
+					
 					Thésaurus des effets sur la santé
 				</groupbox>
 
 				<groupbox>
 					<caption label="7.2. AUTRES RISQUES" />
+								<grid>
+					<rows>
+					
+					<row>
+					Rechercher:
+							<textbox id="Rechercher_santé" width="80%"
+								value="${win$composer.inventoryItem.title}"
+								constraint="no empty" />
+					
+					</row>
+					<row>
+					
+					<cell>
+
+							<tree id="tree7" rows="7" multiple="true"
+								checkmark="true">
+								<treecols>
+									<treecol label="Thésaurus" />
+									<treecol label="Activités" />
+								</treecols>
+								<treechildren>
+									<treeitem>
+										<treerow>
+											<treecell label="Item 1" />
+											<treecell
+												label="Item 1 description" />
+										</treerow>
+									</treeitem>
+									<treeitem>
+										<treerow>
+											<treecell label="Item 2" />
+											<treecell
+												label="Item 2 description" />
+										</treerow>
+										<treechildren>
+											<treeitem>
+												<treerow>
+													<treecell
+														label="Item 2.1" />
+												</treerow>
+												<treechildren>
+													<treeitem>
+														<treerow>
+															<treecell
+																label="Item 2.1.1" />
+														</treerow>
+													</treeitem>
+													<treeitem>
+														<treerow>
+															<treecell
+																label="Item 2.1.2" />
+														</treerow>
+													</treeitem>
+												</treechildren>
+											</treeitem>
+											<treeitem>
+												<treerow>
+													<treecell
+														label="Item 2.2" />
+													<treecell
+														label="Item 2.2 description" />
+												</treerow>
+											</treeitem>
+										</treechildren>
+									</treeitem>
+									<treeitem label="Item 3" />
+								</treechildren>
+								
+							
+							</tree>
+
+
+						</cell>
+						
+						<cell>
+						<vbox width="100%"  >
+						Description de l'effet sur la Santé:
+						<textbox multiline="true" width="100%"  height="100px" hflex="100%" />
+					</vbox> 
+						
+						</cell>
+					</row>
+					
+					</rows>
+				</grid>
+				
+					
 					Thésaurus des effets sur la santé
 				</groupbox>
 			</groupbox>
@@ -169,22 +953,239 @@
 
 				<groupbox>
 					<caption label="8.1. VISITE MEDICALE" />
+					
+					<grid>
+				<rows>
+				<row>
+				Indications : 
+				</row>
+							<row>
+						
+						<textbox multiline="true" width="100%"  height="70px" />
+					 </row>
+					 
+				</rows>
+				</grid>
+					
 				</groupbox>
 
 				<groupbox>
 					<caption label="8.2. EXAMENS COMPLEMENTAIRES" />
+					
+								<grid>
+					<rows>
+					
+					<row>
+					Rechercher:
+							<textbox id="Rechercher_Examen_Complémentaire" width="80%"
+								value="${win$composer.inventoryItem.title}"
+								constraint="no empty" />
+					
+					</row>
+					<row>
+					
+					<cell>
+
+							<tree id="tree8" rows="7" multiple="true"
+								checkmark="true">
+								<treecols>
+									<treecol label="Thésaurus" />
+									<treecol label="Activités" />
+								</treecols>
+								<treechildren>
+									<treeitem>
+										<treerow>
+											<treecell label="Item 1" />
+											<treecell
+												label="Item 1 description" />
+										</treerow>
+									</treeitem>
+									<treeitem>
+										<treerow>
+											<treecell label="Item 2" />
+											<treecell
+												label="Item 2 description" />
+										</treerow>
+										<treechildren>
+											<treeitem>
+												<treerow>
+													<treecell
+														label="Item 2.1" />
+												</treerow>
+												<treechildren>
+													<treeitem>
+														<treerow>
+															<treecell
+																label="Item 2.1.1" />
+														</treerow>
+													</treeitem>
+													<treeitem>
+														<treerow>
+															<treecell
+																label="Item 2.1.2" />
+														</treerow>
+													</treeitem>
+												</treechildren>
+											</treeitem>
+											<treeitem>
+												<treerow>
+													<treecell
+														label="Item 2.2" />
+													<treecell
+														label="Item 2.2 description" />
+												</treerow>
+											</treeitem>
+										</treechildren>
+									</treeitem>
+									<treeitem label="Item 3" />
+								</treechildren>
+								
+							
+							</tree>
+
+
+						</cell>
+						
+						<cell>
+						<vbox width="100%"  >
+						Description Examen Complémentaire:
+						<textbox multiline="true" width="100%"  height="100px" hflex="100%" />
+					</vbox> 
+						
+						</cell>
+					</row>
+					
+					</rows>
+				</grid>
+				
 					Thésaurus des examens complémentaires
 				</groupbox>
 
 				<groupbox>
 					<caption label="8.3. VACCINATIONS" />
+					
+								<grid>
+					<rows>
+					
+					<row>
+					Rechercher:
+							<textbox id="Rechercher_Vaccin" width="80%"
+								value="${win$composer.inventoryItem.title}"
+								constraint="no empty" />
+					
+					</row>
+					<row>
+					
+					<cell>
+
+							<tree id="tree9" rows="7" multiple="true"
+								checkmark="true">
+								<treecols>
+									<treecol label="Thésaurus" />
+									<treecol label="Activités" />
+								</treecols>
+								<treechildren>
+									<treeitem>
+										<treerow>
+											<treecell label="Item 1" />
+											<treecell
+												label="Item 1 description" />
+										</treerow>
+									</treeitem>
+									<treeitem>
+										<treerow>
+											<treecell label="Item 2" />
+											<treecell
+												label="Item 2 description" />
+										</treerow>
+										<treechildren>
+											<treeitem>
+												<treerow>
+													<treecell
+														label="Item 2.1" />
+												</treerow>
+												<treechildren>
+													<treeitem>
+														<treerow>
+															<treecell
+																label="Item 2.1.1" />
+														</treerow>
+													</treeitem>
+													<treeitem>
+														<treerow>
+															<treecell
+																label="Item 2.1.2" />
+														</treerow>
+													</treeitem>
+												</treechildren>
+											</treeitem>
+											<treeitem>
+												<treerow>
+													<treecell
+														label="Item 2.2" />
+													<treecell
+														label="Item 2.2 description" />
+												</treerow>
+											</treeitem>
+										</treechildren>
+									</treeitem>
+									<treeitem label="Item 3" />
+								</treechildren>
+								
+							
+							</tree>
+
+
+						</cell>
+						
+						<cell>
+						<vbox width="100%"  >
+						Description du Vaccin:
+						<textbox multiline="true" width="100%"  height="100px" hflex="100%" />
+					</vbox> 
+						
+						</cell>
+					</row>
+					
+					</rows>
+				</grid>
+				
+					
 					Thésaurus des vaccins
-				</groupbox>
+						</groupbox>
 				<groupbox>
 					<caption label="8.4. SUIVI POST PROFESSIONNEL" />
+					
+					<grid>
+				<rows>
+				<row>
+				Indications : 
+				</row>
+							<row>
+						
+						<textbox multiline="true" width="100%"  height="70px" />
+					 </row>
+					 
+				</rows>
+				</grid>
+					
 				</groupbox>
 				<groupbox>
 					<caption label="8.5. DOSSIER MEDICAL" />
+					
+					<grid>
+				<rows>
+				<row>
+				Indications : 
+				</row>
+							<row>
+						
+						<textbox multiline="true" width="100%"  height="70px" />
+					 </row>
+					 
+				</rows>
+				</grid>
+					
 				</groupbox>
 
 			</groupbox>
@@ -193,6 +1194,19 @@
 			<groupbox>
 				<caption
 					label="9. NUISANCES POUR L'ENVIRONNEMENT EXTERIEUR" />
+					
+					<grid>
+				<rows>
+				<row>
+				Indications : 
+				</row>
+							<row>
+						
+						<textbox multiline="true" width="100%"  height="70px" />
+					 </row>
+					 
+				</rows>
+				</grid>
 
 			</groupbox>
 
@@ -204,20 +1218,224 @@
 				<groupbox>
 					<caption
 						label="10.1. INDICATEURS D'AMBIANCE ET METROLOGIE" />
+						
+						<grid>
+				<rows>
+				<row>
+				Indications : 
+				</row>
+							<row>
+						
+						<textbox multiline="true" width="100%"  height="70px" />
+					 </row>
+					 
+				</rows>
+				</grid>
+						
 				</groupbox>
 
 				<groupbox>
 					<caption label="10.2. PREVENTION COLLECTIVE" />
+					
+								<grid>
+					<rows>
+					
+					<row>
+					Rechercher:
+							<textbox id="Rechercher_Prévention_Collective" width="80%"
+								value="${win$composer.inventoryItem.title}"
+								constraint="no empty" />
+					
+					</row>
+					<row>
+					
+					<cell>
+
+							<tree id="tree10" rows="7" multiple="true"
+								checkmark="true">
+								<treecols>
+									<treecol label="Thésaurus" />
+									<treecol label="Activités" />
+								</treecols>
+								<treechildren>
+									<treeitem>
+										<treerow>
+											<treecell label="Item 1" />
+											<treecell
+												label="Item 1 description" />
+										</treerow>
+									</treeitem>
+									<treeitem>
+										<treerow>
+											<treecell label="Item 2" />
+											<treecell
+												label="Item 2 description" />
+										</treerow>
+										<treechildren>
+											<treeitem>
+												<treerow>
+													<treecell
+														label="Item 2.1" />
+												</treerow>
+												<treechildren>
+													<treeitem>
+														<treerow>
+															<treecell
+																label="Item 2.1.1" />
+														</treerow>
+													</treeitem>
+													<treeitem>
+														<treerow>
+															<treecell
+																label="Item 2.1.2" />
+														</treerow>
+													</treeitem>
+												</treechildren>
+											</treeitem>
+											<treeitem>
+												<treerow>
+													<treecell
+														label="Item 2.2" />
+													<treecell
+														label="Item 2.2 description" />
+												</treerow>
+											</treeitem>
+										</treechildren>
+									</treeitem>
+									<treeitem label="Item 3" />
+								</treechildren>
+								
+							
+							</tree>
+
+
+						</cell>
+						
+						<cell>
+						<vbox width="100%"  >
+						Description sur la Prévention:
+						<textbox multiline="true" width="100%"  height="100px" hflex="100%" />
+					</vbox> 
+						
+						</cell>
+					</row>
+					
+					</rows>
+				</grid>
+				
+					
 					Thésaurus de la prévention
 				</groupbox>
 
 				<groupbox>
 					<caption label="10.3. PREVENTION INDIVIDUELLE" />
+					
+								<grid>
+					<rows>
+					
+					<row>
+					Rechercher:
+							<textbox id="Rechercher_Prevention_idividuelle" width="80%"
+								value="${win$composer.inventoryItem.title}"
+								constraint="no empty" />
+					
+					</row>
+					<row>
+					
+					<cell>
+
+							<tree id="tree11" rows="7" multiple="true"
+								checkmark="true">
+								<treecols>
+									<treecol label="Thésaurus" />
+									<treecol label="Activités" />
+								</treecols>
+								<treechildren>
+									<treeitem>
+										<treerow>
+											<treecell label="Item 1" />
+											<treecell
+												label="Item 1 description" />
+										</treerow>
+									</treeitem>
+									<treeitem>
+										<treerow>
+											<treecell label="Item 2" />
+											<treecell
+												label="Item 2 description" />
+										</treerow>
+										<treechildren>
+											<treeitem>
+												<treerow>
+													<treecell
+														label="Item 2.1" />
+												</treerow>
+												<treechildren>
+													<treeitem>
+														<treerow>
+															<treecell
+																label="Item 2.1.1" />
+														</treerow>
+													</treeitem>
+													<treeitem>
+														<treerow>
+															<treecell
+																label="Item 2.1.2" />
+														</treerow>
+													</treeitem>
+												</treechildren>
+											</treeitem>
+											<treeitem>
+												<treerow>
+													<treecell
+														label="Item 2.2" />
+													<treecell
+														label="Item 2.2 description" />
+												</treerow>
+											</treeitem>
+										</treechildren>
+									</treeitem>
+									<treeitem label="Item 3" />
+								</treechildren>
+								
+							
+							</tree>
+
+
+						</cell>
+						
+						<cell>
+						<vbox width="100%"  >
+						Description de la Prévention individuelle:
+						<textbox multiline="true" width="100%"  height="100px" hflex="100%" />
+					</vbox> 
+						
+						</cell>
+					</row>
+					
+					</rows>
+				</grid>
+				
+					
 					Thésaurus de la prévention
 				</groupbox>
 				<groupbox>
 					<caption
 						label="10.4. FORMATION - INFORMATION - SENSIBILISATION" />
+						
+						<grid>
+				<rows>
+				<row>
+				Indications : 
+				</row>
+							<row>
+						
+						<textbox multiline="true" width="100%"  height="70px" />
+					 </row>
+					 
+				</rows>
+				</grid>
+						
 				</groupbox>
 			</groupbox>
 			<space />
@@ -227,17 +1445,73 @@
 				<groupbox>
 					<caption
 						label="11.1. TEXTES LEGISLATIFS ET REGLEMENTAIRES" />
+						
+						<grid>
+				<rows>
+				<row>
+				Indications : 
+				</row>
+							<row>
+						
+						<textbox multiline="true" width="100%"  height="70px" />
+					 </row>
+					 
+				</rows>
+				</grid>
+						
 				</groupbox>
 
 				<groupbox>
 					<caption label="11.2. RECOMMANDATIONS" />
+					
+					<grid>
+				<rows>
+				<row>
+				Indications : 
+				</row>
+							<row>
+						
+						<textbox multiline="true" width="100%"  height="70px" />
+					 </row>
+					 
+				</rows>
+				</grid>
+					
 				</groupbox>
 
 				<groupbox>
 					<caption label=" 11.3. NORMES" />
+					
+					<grid>
+				<rows>
+				<row>
+				Indications : 
+				</row>
+							<row>
+						
+						<textbox multiline="true" width="100%"  height="70px" />
+					 </row>
+					 
+				</rows>
+				</grid>
+					
 				</groupbox>
 				<groupbox>
 					<caption label=" 11.4. CONVENTIONS COLLECTIVES" />
+					
+					<grid>
+				<rows>
+				<row>
+				Indications : 
+				</row>
+							<row>
+						
+						<textbox multiline="true" width="100%"  height="70px" />
+					 </row>
+					 
+				</rows>
+				</grid>
+					
 				</groupbox>
 			</groupbox>
 			<space />
