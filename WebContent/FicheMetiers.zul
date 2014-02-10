@@ -219,7 +219,7 @@
 					<cell>
 
 							<tree id="tree" rows="7" multiple="true"
-								checkmark="true">
+								checkmark="true" onDrop="move(event.dragged)" droppable="true" >
 								<treecols>
 									<treecol label="Thésaurus" />
 									<treecol label="Activités" />
@@ -227,7 +227,7 @@
 								<treechildren>
 									<treeitem>
 										<treerow>
-											<treecell label="Item 1" />
+											<treecell label="Item 1" draggable="true" droppable="true" onDrop="move(event.dragged)" />
 											<treecell
 												label="Item 1 description" />
 										</treerow>
@@ -290,6 +290,15 @@
 					</rows>
 				</grid>
 				
+				 <zscript><![CDATA[
+        void move(Component dragged) {
+            if (self instanceof Listitem) {
+                self.parent.insertBefore(dragged, self);
+            } else {
+                self.appendChild(dragged);
+            }
+        }
+    ]]></zscript>
 				
 					
 					 
