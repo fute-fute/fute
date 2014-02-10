@@ -76,20 +76,23 @@
 			<groupbox width="100%">
 			 
 				<caption label="3. FORMATION - QUALIFICATION" />
+				
  
 				 <grid>
 				 <rows>
 				 <row>
 				 <cell>Niveau:
+				 
                     </cell>
 				 <cell>
 				 <zscript><![CDATA[
         String[] etudes = {"Niveau VI : pas de qualification requise","Niveaux de formation V : CAP et BEP","Niveaux de formation IV : baccalauréats techniques et professionnels","Niveaux de formation III : bac+3 licence","Niveaux de formation II : bac+5 master"};
     ]]></zscript>
-    <bandbox id="bd1" mold="rounded" autodrop="true">  
+   
+    <bandbox id="itemName" width="60%" mold="rounded" autodrop="true" >  
         <bandpopup>
             <listbox height="350px" width="550px" mold="paging" autopaging="true"
-                onSelect="bd1.value=self.selectedItem.label; bd1.close();">
+                onSelect="itemName.value=self.selectedItem.label; itemName.close();">
                 <listhead>
                     <listheader label="Niveau de Formation" />
                 </listhead>
@@ -97,11 +100,69 @@
             </listbox>
         </bandpopup>
     </bandbox>
+    <button label="Ajouter" onClick="addItem(itemName.getValue())" />
+        <button label="Supprimer" onClick="deleteItem()" />
     </cell>
     
     </row>
 			  </rows>
 			</grid>	 
+			 <groupbox>
+        <caption>
+            Niveau(x) sélectionné(s) : <label id="itemCount"/>
+        </caption>
+        <listbox id="itemList" >
+            <listhead>
+                <listheader label="Niveau(x) requis" />
+            </listhead>
+            
+        </listbox>
+    </groupbox>
+    
+      <zscript><![CDATA[
+         
+        //declare zscript methods
+        void addItem(String name){
+            //you could new a component directly and append it to another component.
+            Listitem item = new Listitem(name);
+            itemList.appendChild(item);
+            //select the new created item.
+            itemList.setSelectedItem(item);
+            updateItemCount();
+        }
+        void deleteItem(){
+            int index = itemList.getSelectedIndex();
+            if(index >= 0){
+                //remove the selected item
+                itemList.removeItemAt(index);
+                updateItemCount();
+            }else{
+                //a easy way to show a message to user
+                alert("Please select an item first!");
+            }
+        }
+        void updateItemCount(){
+            //update extra information for user
+            itemCount.setValue(Integer.toString(itemList.getItemCount()));
+        }
+         
+        //initialize
+        updateItemCount();
+    ]]></zscript>
+    
+    <grid>
+				<rows>
+				<row>
+				Commentaires : 
+				</row>
+							<row>
+						
+						<textbox multiline="true" width="100%"  height="70px" />
+					 </row>
+					 
+				</rows>
+				</grid>
+    
 			</groupbox>
 			<space />
 			<groupbox>
